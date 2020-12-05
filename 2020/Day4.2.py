@@ -4,7 +4,6 @@ fp = open('Day4.1.input.txt')
 lines = fp.readlines()
 
 def validDoc(doc):
-    print("#" + doc + "#")
     if ( not(re.search('byr:(19[2-9][0-9]|200(0|1|2)) ', doc))):
         return False
     if ( not(re.search('iyr:(201[0-9]|2020) ', doc))):
