@@ -1,14 +1,8 @@
 folders = {}
 
-class File:
-    name = ''
-    size = ''
-
 class Folder:
     path = ''
     parentPath = '' 
-    subs = []
-    files = {}
     name = ''
     size = 0
 
@@ -20,10 +14,8 @@ class Folder:
     def addsub(self, subname):
         global folders
         folders[self.path + subname] = Folder(self.path, subname)
-        self.subs.append( subname )
 
     def addFile(self, name, size):
-        self.files[name] = size
         self.addSize(size)
 
     def addSize(self, size):
