@@ -1,7 +1,9 @@
 folders = {}
+
 class File:
     name = ''
     size = ''
+
 class Folder:
     path = ''
     parentPath = '' 
@@ -29,6 +31,7 @@ class Folder:
         if self.name != '/':
             folders[self.parentPath].addSize(size)
 
+
 #fp = open('test7.txt')
 fp = open('input7.txt')
 lines = fp.readlines()
@@ -54,9 +57,12 @@ for line in lines:
             else:
                 currentFolder = folders[currentFolder].path + arg
 
-totalSize = 0
-for key in folders.keys():
-    if folders[key].size <= 100000:
-        totalSize += folders[key].size
+TOTAL_SPACE = 70000000
+USED_SPACE = folders['/'].size
+bestSize = 30000000
 
-print(totalSize)
+for key in folders.keys():
+    if USED_SPACE - folders[key].size < 40000000 and folders[key].size < bestSize:
+        bestSize = folders[key].size
+
+print(bestSize)
